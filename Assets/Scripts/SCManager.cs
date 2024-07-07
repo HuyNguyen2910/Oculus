@@ -17,6 +17,9 @@ public class SCManager : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI startText;
+    public Vector3 leftVector;
+    public Vector3 rightVector;
+    public Vector3 centerVector;
     public float minSpawnTime = 0.2f;
     public float maxSpawnTime = 1f;
     public float lastSpawnTime = 0;
@@ -48,7 +51,7 @@ public class SCManager : MonoBehaviour
     {
         isPlay = true;
         startObj.SetActive(false);
-        foreach(Transform child in containTarget)
+        foreach (Transform child in containTarget)
         {
             Destroy(child.gameObject);
         }
@@ -57,14 +60,27 @@ public class SCManager : MonoBehaviour
     }
     public void SpawnTarget()
     {
-        Target tar = Instantiate(target, spawnPos[Random.Range(0, spawnPos.Count - 1)].position, Quaternion.identity, containTarget);
-        tar.Scale();
+        int index = Random.Range(0, spawnPos.Count - 1);
+        Vector3 direction = new Vector3();
+
+        Target tar = Instantiate(target, spawnPos[index].position, Quaternion.identity, containTarget);
+        switch (spawnPos[index].GetComponent<Pos>().direction)
+        {
+            case 0:
+                direction = leftVector;
+                break;
+            case 1:
+                direction = rightVector;
+                break;
+            case 2:
+                direction = centerVector;
+                break;
+        }
+        tar.Move(direction);
         UpdateSpawnTime();
     }
-    public void Lose(Target target)
+    public void Lose()
     {
-        DOTween.Clear();
-        target.Explore();
         isPlay = false;
         loseAudio.Play();
         startObj.gameObject.SetActive(true);

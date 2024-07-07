@@ -15,7 +15,19 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        transform.DORotate(new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)), 20);
         //ChangePos();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Explore")
+        {
+            if (SCManager.Instance.isPlay)
+            {
+                SCManager.Instance.Lose();
+            }
+            Destroy(gameObject);
+        }
     }
     private void Update()
     {
@@ -43,16 +55,17 @@ public class Target : MonoBehaviour
     //    pointSpawned.ShowPoint(s);
     //    ChangePos();
     //}
-    public void Scale()
+    public void Move(Vector3 direction)
     {
-        if (SCManager.Instance.isPlay)
-        {
-            sequence = DOTween.Sequence();
-            sequence.Append(transform.DOScale(Vector3.one, 4)).AppendCallback(() => SCManager.Instance.Lose(this));
-        }
+        GetComponent<Rigidbody>().velocity = direction;
+        //if (SCManager.Instance.isPlay)
+        //{
+        //    sequence = DOTween.Sequence();
+        //    sequence.Append(transform.DOScale(Vector3.one, 4)).AppendCallback(() => SCManager.Instance.Lose(this));
+        //}
     }
-    public void Explore()
-    {
-        mesh.material.color = Color.red;
-    }
+    //public void Explore()
+    //{
+    //    mesh.material.color = Color.red;
+    //}
 }
