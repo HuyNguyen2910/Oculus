@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class ButtonOVR : MonoBehaviour
 {
     public Button btn;
+    public Target target;
+    public int score;
     private void Start()
     {
         if (btn != null)
@@ -27,12 +29,12 @@ public class ButtonOVR : MonoBehaviour
         }
         else
         {
-            if (DYSManager.Instance.time != 0)
+            if (GameManager.Instance.isPlay)
             {
                 Debug.Log("Shoot!");
-                DYSCanvas.Instance.SetShootScore();
-                GetComponent<DYSTargetWeapon>().soundDestroy = 2;
-                Destroy(transform.gameObject);
+                CanvasScore.Instance.AddScore(score);
+                GameManager.Instance.shootedAudio.Play();
+                target.SpawnPoint(score);
             }
         }
     }
