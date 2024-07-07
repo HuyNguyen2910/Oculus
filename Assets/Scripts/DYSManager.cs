@@ -97,6 +97,15 @@ public class DYSManager : MonoBehaviour
         else if (time > 80 && time <= 90) count = 9;
         else if (time > 90 && time <= 100) count = 10;
         else if (time > 100 && time <= 110) count = 11;
+        else if (time > 110 && time <= 120) count = 12;
+        else if (time > 120 && time <= 130) count = 13;
+        else if (time > 130 && time <= 140) count = 14;
+        else if (time > 140 && time <= 150) count = 15;
+        else if (time > 150 && time <= 160) count = 16;
+        else if (time > 160 && time <= 170) count = 17;
+        else if (time > 170 && time <= 180) count = 18;
+        else if (time > 180 && time <= 190) count = 19;
+        else if (time > 190 && time <= 200) count = 20;
         //StartCoroutine(WaitToSpawn());
     }
     //private IEnumerator WaitToSpawn()
