@@ -15,7 +15,6 @@ public class DYSTargetWeapon : MonoBehaviour
     private float reachTime = 8;
     private void Start()
     {
-        player = DYSManager.Instance.player;
         transform.DOMove(player.position, reachTime);
     }
     private void OnTriggerEnter(Collider other)
