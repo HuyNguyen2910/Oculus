@@ -6915,7 +6915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8240222251932533954
 Transform:
   m_ObjectHideFlags: 0
@@ -17980,7 +17980,7 @@ GameObject:
   - component: {fileID: 5251613735885074333}
   - component: {fileID: 6751156350627470850}
   m_Layer: 0
-  m_Name: untitled
+  m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
