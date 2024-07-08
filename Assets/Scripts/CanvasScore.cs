@@ -12,7 +12,7 @@ public class CanvasScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private string scoreString = "Score:\n";
 
-    private int score;
+    public int score;
     private void Awake()
     {
         Instance = this;

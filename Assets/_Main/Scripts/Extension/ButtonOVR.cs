@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ButtonOVR : MonoBehaviour
 {
     public Button btn;
+    public Target target;
     private void Start()
     {
         if (btn != null)
@@ -33,9 +34,10 @@ public class ButtonOVR : MonoBehaviour
                 CanvasScore.Instance.AddScore(1);
                 SCManager.Instance.shootedAudio.Play();
                 //target.SpawnPoint(score);
-                GetComponent<Target>().sequence.Kill();
-                SCManager.Instance.SpawnTarget();
-                Destroy(gameObject);
+                if (target != null)
+                    target.sequence.Kill();
+                //SCManager.Instance.SpawnTarget();
+                Destroy(target.gameObject);
             }
         }
     }
