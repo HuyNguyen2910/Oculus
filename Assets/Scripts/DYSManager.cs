@@ -47,6 +47,7 @@ public class DYSManager : MonoBehaviour
     }
     public void StartGame()
     {
+        DYSCanvas.Instance.RestartGame();
         Time.timeScale = 1;
         startObj.gameObject.SetActive(false);
         foreach (Transform transform in containTarget)
@@ -75,12 +76,12 @@ public class DYSManager : MonoBehaviour
 
     //    SpawnTarget();
     //}
-    public void SetButtonStart()
+    public void Lose()
     {
         loseAudio.Play();
         time = 0;
         startObj.gameObject.SetActive(true);
-        startButton.onClick.AddListener(DYSCanvas.Instance.RestartGame);
+        //startButton.onClick.AddListener(DYSCanvas.Instance.RestartGame);
         startText.text = restartString;
         titleText.text = loseString;
     }

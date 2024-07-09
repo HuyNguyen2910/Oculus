@@ -31,7 +31,7 @@ public class DYSTargetWeapon : MonoBehaviour
         {
             Debug.Log("Killed!");
             Time.timeScale = 0;
-            DYSManager.Instance.SetButtonStart();
+            DYSManager.Instance.Lose();
             //DYSCanvas.Instance.Lose();
         }
     }

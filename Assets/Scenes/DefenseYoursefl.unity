@@ -1566,27 +1566,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867078829278930835}
   m_CullTransparentMesh: 1
---- !u!65 &1305843408344507874
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302641320830344824}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.9380482, y: 1.6134646, z: 0.22786216}
-  m_Center: {x: -0.008767884, y: -0.20537475, z: 0.009504524}
 --- !u!114 &1358883343532745962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4294,7 +4273,6 @@ GameObject:
   - component: {fileID: 420314546111317642}
   - component: {fileID: 7670258658047306324}
   - component: {fileID: 6577658719526474837}
-  - component: {fileID: 1305843408344507874}
   m_Layer: 0
   m_Name: Shield01_CleanPlainBlueBlack
   m_TagString: Untagged
@@ -5629,8 +5607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff07930d9bfb6094ba9ed2b953ebd0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestartButton: {fileID: 3146485493568505120}
-  loseImage: {fileID: 8633778829004900326}
   highScoreText: {fileID: 6182096678640972828}
   highScoreText1: {fileID: 3003492643717334165}
   scoreText: {fileID: 1735710709910147793}

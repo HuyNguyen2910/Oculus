@@ -9,8 +9,6 @@ public class DYSCanvas : MonoBehaviour
 {
     public static DYSCanvas Instance;
 
-    [SerializeField] private Button RestartButton;
-    [SerializeField] private GameObject loseImage;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI highScoreText1;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -21,7 +19,6 @@ public class DYSCanvas : MonoBehaviour
 
     private string blockKey = "BlockHS";
     private string shootKey = "ShootHS";
-    private string sceneName = "DefenseYourSelf";
 
     private int blockCount;
     private int shootCount;
@@ -33,12 +30,9 @@ public class DYSCanvas : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-
-        DontDestroyOnLoad(this);
     }
     private void Start()
     {
-        RestartButton.onClick.AddListener(RestartGame);
         GetHighScore();
     }
     //public void Lose()
@@ -64,7 +58,7 @@ public class DYSCanvas : MonoBehaviour
         blockCount = 0;
         shootCount = 0;
         SetScore();
-        DYSManager.Instance.StartGame();
+        //DYSManager.Instance.StartGame();
         //SceneManager.LoadScene(sceneName);
         //loseImage.SetActive(false);
     }
