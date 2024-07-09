@@ -25,8 +25,8 @@ public class SCManager : MonoBehaviour
     //public float maxSpawnTime = 1f;
     public float lastSpawnTime = 0;
     public float spawnTime = 0;
-    public int count;
 
+    private float defaultSpawnTime;
     public bool isPlay;
     private void Awake()
     {
@@ -34,6 +34,7 @@ public class SCManager : MonoBehaviour
     }
     private void Start()
     {
+        defaultSpawnTime = spawnTime;
         isPlay = false;
         startButton.onClick.AddListener(StartGame);
     }
@@ -52,13 +53,14 @@ public class SCManager : MonoBehaviour
     public void StartGame()
     {
         isPlay = true;
-        count = 1;
+        spawnTime = defaultSpawnTime;
         startObj.SetActive(false);
         foreach (Transform child in containTarget)
         {
             Destroy(child.gameObject);
         }
         CanvasScore.Instance.RestartGame();
+        titleText.text = "Crime Shooter";
         SpawnTarget();
     }
     public void SpawnTarget()
