@@ -96,6 +96,6 @@ public class SCManager : MonoBehaviour
         startObj.gameObject.SetActive(true);
         //startButton.onClick.AddListener(CanvasScore.Instance.RestartGame);
         startText.text = "Restart";
-        titleText.text = "You lose!";
+        titleText.text = "You have been shot!";
     }
 }
