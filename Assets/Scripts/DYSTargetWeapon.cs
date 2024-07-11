@@ -12,7 +12,7 @@ public class DYSTargetWeapon : MonoBehaviour
     private string shieldTag = "Shield";
     private string playerTag = "Player";
 
-    private float reachTime = 8;
+    public float reachTime = 3;
     private void Start()
     {
         player = DYSManager.Instance.player;

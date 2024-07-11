@@ -12,6 +12,7 @@ public class DYSManager : MonoBehaviour
     public AudioSource loseAudio;
     public float time;
 
+    [SerializeField] private Collider shield;
     [SerializeField] private Button startButton;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI startText;
@@ -19,11 +20,14 @@ public class DYSManager : MonoBehaviour
     [SerializeField] private List<GameObject> target;
     [SerializeField] private Transform containTarget;
     [SerializeField] private float spawnTime = 4f;
-    [SerializeField] private float minSpawnDistance = 5;
-    [SerializeField] private float maxSpawnDistance = 20;
+    [SerializeField] private float ymin = 0.5f;
+    [SerializeField] private float ymax = 12;
+    [SerializeField] private float xpos = 12;
+    [SerializeField] private float zpos = -12;
 
     [SerializeField] private string loseString = "YOU LOSE!";
     [SerializeField] private string restartString = "Restart";
+    private float saveSpawnTime;
     
     private void Awake()
     {
@@ -31,6 +35,7 @@ public class DYSManager : MonoBehaviour
     }
     private void Start()
     {
+        saveSpawnTime = spawnTime;
         startButton.onClick.AddListener(StartGame);
     }
     private void Update()
@@ -41,12 +46,16 @@ public class DYSManager : MonoBehaviour
             if (time > spawnTime)
             {
                 SpawnTarget();
+                if (spawnTime > 1) spawnTime -= 0.01f;
                 time = 0.001f;
             }
         }
     }
     public void StartGame()
     {
+        spawnTime = saveSpawnTime;
+        player.GetComponent<Collider>().enabled = true;
+        shield.enabled = true;
         DYSCanvas.Instance.RestartGame();
         Time.timeScale = 1;
         startObj.gameObject.SetActive(false);
@@ -59,11 +68,7 @@ public class DYSManager : MonoBehaviour
     private void SpawnTarget()
     {
         GameObject targetObj = target[Random.Range(0, target.Count - 1)];
-        targetObj.transform.position = Random.onUnitSphere * maxSpawnDistance;
-        targetObj.transform.position = new Vector3(
-            targetObj.transform.position.x, 
-            Mathf.Abs(targetObj.transform.position.y), 
-            targetObj.transform.position.z);
+        targetObj.transform.position = new Vector3(Random.Range(-xpos, xpos), Random.Range(ymin, ymax), zpos);
 
         targetObj.transform.LookAt(containTarget);
         Instantiate(targetObj, containTarget);
@@ -78,6 +83,8 @@ public class DYSManager : MonoBehaviour
     //}
     public void Lose()
     {
+        player.GetComponent<Collider>().enabled = false;
+        shield.enabled = false;
         loseAudio.Play();
         time = 0;
         startObj.gameObject.SetActive(true);

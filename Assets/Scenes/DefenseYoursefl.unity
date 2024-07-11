@@ -953,6 +953,7 @@ MonoBehaviour:
   blockedAudio: {fileID: 4473543889131094025}
   loseAudio: {fileID: 884429202171678942}
   time: 0
+  shield: {fileID: 1296457823063146251}
   startButton: {fileID: 8935155870620232612}
   titleText: {fileID: 8015238567252685011}
   startText: {fileID: 5746498024860803040}
@@ -966,9 +967,11 @@ MonoBehaviour:
   - {fileID: 3876880678910354438, guid: 4b1258aeec3e8324c818c215331ed93e, type: 3}
   - {fileID: 6316559034773229127, guid: 00a426678692d02479fca36921aa5724, type: 3}
   containTarget: {fileID: 860929935}
-  spawnTime: 3
-  minSpawnDistance: 5
-  maxSpawnDistance: 20
+  spawnTime: 2
+  ymin: 0.5
+  ymax: 12
+  xpos: 12
+  zpos: 12
   loseString: YOU LOSE!
   restartString: Restart
 --- !u!4 &1749426102
@@ -1855,7 +1858,6 @@ GameObject:
   - component: {fileID: 6553043110136098442}
   - component: {fileID: 1771216281879438314}
   - component: {fileID: 2321559718901465085}
-  - component: {fileID: 1898485014776298193}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -2190,27 +2192,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!65 &1898485014776298193
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704088424501614192}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &1914797392332231523
 CanvasRenderer:
   m_ObjectHideFlags: 0
