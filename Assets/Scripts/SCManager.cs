@@ -86,7 +86,7 @@ public class SCManager : MonoBehaviour
         UpdateSpawnTime();
 
         int score = CanvasScore.Instance.score;
-        if (score > 5 && spawnTime > 2) spawnTime -= 0.05f;
+        if (score > 5 && spawnTime > 1) spawnTime -= 0.05f;
     }
     public void Lose(Target target)
     {
