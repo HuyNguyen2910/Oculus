@@ -8,7 +8,10 @@ public class Target : MonoBehaviour
     [SerializeField] private Point point;
     [SerializeField] private Transform playerCam;
     [SerializeField] private float showTime = 5;
-    [SerializeField] private float spawnDistance = 5;
+    [SerializeField] private float ymin = 0.5f;
+    [SerializeField] private float ymax = 12;
+    [SerializeField] private float xpos = 12;
+    [SerializeField] private float zpos = -12;
 
     private float timer;
 
@@ -27,12 +30,7 @@ public class Target : MonoBehaviour
     public void ChangePos()
     {
         timer = 0;
-        transform.position = Random.onUnitSphere * spawnDistance /*+ new Vector3(0, 2, 0)*/;
-        transform.position = new Vector3(
-            transform.position.x,
-            Mathf.Abs(transform.position.y),
-            transform.position.z);
-
+        transform.position = new Vector3(Random.Range(-xpos, xpos), Random.Range(ymin, ymax), zpos);
         transform.LookAt(playerCam);
     }
     public void SpawnPoint(int s)

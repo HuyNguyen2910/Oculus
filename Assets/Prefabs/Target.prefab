@@ -515,8 +515,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 5633778935349046907, guid: 1274119ecb8a24148b4169c562335df5, type: 3}
   playerCam: {fileID: 0}
-  showTime: 5
-  spawnDistance: 5
+  showTime: 3
+  ymin: -3
+  ymax: 3
+  xpos: 4
+  zpos: 5
 --- !u!1 &8757787150280651366
 GameObject:
   m_ObjectHideFlags: 0
