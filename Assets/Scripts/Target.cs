@@ -27,6 +27,7 @@ public class Target : MonoBehaviour
                 ready = true;
             }
         }
+        GetComponent<Collider>().enabled = Time.timeScale != 0;
     }
     private void OnTriggerEnter(Collider other)
     {
