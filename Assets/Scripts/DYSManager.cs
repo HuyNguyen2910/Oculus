@@ -83,7 +83,7 @@ public class DYSManager : MonoBehaviour
     {
         for (int n = 0; n < count; n++)
         {
-            Instantiate(target, containTarget.position, Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0)), containTarget);
+            Instantiate(target, containTarget.position, Quaternion.Euler(new Vector3(0, Random.Range(90, 270), 0)), containTarget);
             UpdateSpawnTime();
         }
 
