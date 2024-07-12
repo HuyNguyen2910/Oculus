@@ -8,7 +8,7 @@ using TMPro;
 public class SCManager : MonoBehaviour
 {
     public static SCManager Instance;
-    public Target target;
+    public GameObject target;
     public List<Transform> spawnPos;
     public Transform containTarget;
     public GameObject startObj;
@@ -17,8 +17,6 @@ public class SCManager : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI startText;
-    public float minSpawnTime = 0.2f;
-    public float maxSpawnTime = 1f;
     public float lastSpawnTime = 0;
     public float spawnTime = 0;
 
@@ -39,32 +37,35 @@ public class SCManager : MonoBehaviour
             SpawnTarget();
         }
     }
-    void UpdateSpawnTime()
-    {
-        lastSpawnTime = Time.time;
-        spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-    }
     public void StartGame()
     {
         isPlay = true;
         startObj.SetActive(false);
-        foreach(Transform child in containTarget)
-        {
-            Destroy(child.gameObject);
-        }
+        DestroyTarget();
         CanvasScore.Instance.RestartGame();
         SpawnTarget();
     }
     public void SpawnTarget()
     {
-        Target tar = Instantiate(target, spawnPos[Random.Range(0, spawnPos.Count - 1)].position, Quaternion.identity, containTarget);
-        tar.Scale();
-        UpdateSpawnTime();
+        DestroyTarget();
+        foreach (Transform transform in spawnPos)
+        {
+            Instantiate(target, transform.position, Quaternion.identity, containTarget);
+        }
+        //tar.Scale();
+        lastSpawnTime = Time.time;
+    }
+    public void DestroyTarget()
+    {
+        foreach (Transform child in containTarget)
+        {
+            Destroy(child.gameObject);
+        }
     }
     public void Lose(Target target)
     {
         DOTween.Clear();
-        target.Explore();
+        //target.Explore();
         isPlay = false;
         loseAudio.Play();
         startObj.gameObject.SetActive(true);

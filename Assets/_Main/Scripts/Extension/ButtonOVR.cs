@@ -8,11 +8,29 @@ using UnityEngine.UI;
 public class ButtonOVR : MonoBehaviour
 {
     public Button btn;
+    public bool score;
+    public float timer;
+    public GameObject bomb;
+    public GameObject point;
     private void Start()
     {
+        score = Random.value > 0.5f;
+        if (point != null) point.SetActive(score);
+        if (bomb != null) bomb.SetActive(!score);
         if (btn != null)
         {
             GetComponent<BoxCollider>().size = GetComponent<RectTransform>().rect.size;
+        }
+    }
+    private void Update()
+    {
+        if (btn == null)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void OnRaycastClick()
@@ -30,11 +48,11 @@ public class ButtonOVR : MonoBehaviour
             if (SCManager.Instance.isPlay)
             {
                 Debug.Log("Shoot!");
-                CanvasScore.Instance.AddScore(1);
+                CanvasScore.Instance.AddScore(score ? (int)Mathf.Floor((1 - timer) * 10) : -5);
                 SCManager.Instance.shootedAudio.Play();
                 //target.SpawnPoint(score);
-                GetComponent<Target>().sequence.Kill();
-                SCManager.Instance.SpawnTarget();
+                //GetComponent<Target>().sequence.Kill();
+                //SCManager.Instance.SpawnTarget();
                 Destroy(gameObject);
             }
         }

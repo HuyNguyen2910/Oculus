@@ -9,9 +9,9 @@ public class Target : MonoBehaviour
     [SerializeField] private float showTime = 5;
     [SerializeField] private float spawnDistance = 5;
     [SerializeField] private MeshRenderer mesh;
-    public Sequence sequence;
+    //public Sequence sequence;
 
-    private float timer;
+    //private float timer;
 
     private void Start()
     {
@@ -43,14 +43,14 @@ public class Target : MonoBehaviour
     //    pointSpawned.ShowPoint(s);
     //    ChangePos();
     //}
-    public void Scale()
-    {
-        if (SCManager.Instance.isPlay)
-        {
-            sequence = DOTween.Sequence();
-            sequence.Append(transform.DOScale(Vector3.one, 4)).AppendCallback(() => SCManager.Instance.Lose(this));
-        }
-    }
+    //public void Scale()
+    //{
+    //    if (SCManager.Instance.isPlay)
+    //    {
+    //        sequence = DOTween.Sequence();
+    //        sequence.Append(transform.DOScale(Vector3.one, 4)).AppendCallback(() => SCManager.Instance.Lose(this));
+    //    }
+    //}
     public void Explore()
     {
         mesh.material.color = Color.red;
