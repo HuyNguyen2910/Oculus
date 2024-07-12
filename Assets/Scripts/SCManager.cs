@@ -17,28 +17,44 @@ public class SCManager : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI startText;
+    public TextMeshProUGUI timerText;
     public float lastSpawnTime = 0;
     public float spawnTime = 0;
+    public float timer;
 
     public bool isPlay;
+
+    private string timerString = "Time :\n";
+    private float defaultTimer;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
+        defaultTimer = timer;
         isPlay = false;
         startButton.onClick.AddListener(StartGame);
     }
     void Update()
     {
-        if (isPlay && Time.time >= lastSpawnTime + spawnTime)
+        if (isPlay)
         {
-            SpawnTarget();
+            timer -= Time.deltaTime;
+            timerText.text = timerString + Mathf.Round(timer);
+            if (Time.time >= lastSpawnTime + spawnTime)
+            {
+                SpawnTarget();
+            }
+            if (timer < 0)
+            {
+                TimeOver();
+            }
         }
     }
     public void StartGame()
     {
+        timer = defaultTimer;
         isPlay = true;
         startObj.SetActive(false);
         DestroyTarget();
@@ -72,5 +88,16 @@ public class SCManager : MonoBehaviour
         //startButton.onClick.AddListener(CanvasScore.Instance.RestartGame);
         startText.text = "Restart";
         titleText.text = "You lose!";
+    }
+    public void TimeOver()
+    {
+        isPlay = false;
+        timerText.text = timerString + 0;
+        loseAudio.Play();
+        startObj.gameObject.SetActive(true);
+        DestroyTarget();
+        //startButton.onClick.AddListener(CanvasScore.Instance.RestartGame);
+        startText.text = "Restart";
+        titleText.text = "Time Over!";
     }
 }
