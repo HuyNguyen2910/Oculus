@@ -14,6 +14,7 @@ public class SCManager : MonoBehaviour
     public GameObject startObj;
     public AudioSource shootedAudio;
     public AudioSource loseAudio;
+    public AudioSource bombAudio;
     public Button startButton;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI startText;
